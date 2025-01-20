@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table & Sum Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .container input {
+            padding: 10px;
+            width: calc(100% - 20px);
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .container button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .container button:hover {
+            background-color: #0056b3;
+        }
+
+        .container ul {
+            text-align: left;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .container ul li {
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Multiplication Table</h2>
+        
+        <!-- Multiplication Table Section -->
+        <input type="number" id="tableNumber" placeholder="Enter a number">
+        <button onclick="generateTable()">Generate Table</button>
+        
+        <ul id="tableResult"></ul>
+
+        <!-- Sum of Numbers Section -->
+        <h2>Sum of n Numbers</h2>
+        <button onclick="calculateSum()">Calculate Sum</button>
+    </div>
+
+    <script>
+        // Function to generate multiplication table
+        function generateTable() {
+            var n = document.getElementById("tableNumber").value;
+            var resultList = document.getElementById("tableResult");
+            resultList.innerHTML = "";  // Clear previous results
+
+            if (n === "") {
+                alert("Please enter a number.");
+                return;
+            }
+
+            n = parseInt(n);
+            for (var i = 1; i <= 10; i++) {
+                var result = n * i;
+                var listItem = document.createElement("li");
+                listItem.textContent = n + " x " + i + " = " + result;
+                resultList.appendChild(listItem);  // Append each multiplication result to the list
+            }
+        }
+
+        // Function to calculate sum of n numbers
+        function calculateSum() {
+            var n = prompt("Enter the number of values you want to sum:");
+            n = parseInt(n);
+
+            if (isNaN(n) || n <= 0) {
+                alert("Please enter a valid number greater than 0.");
+                return;
+            }
+
+            var sum = 0;
+            for (var i = 1; i <= n; i++) {
+                var value = parseInt(prompt("Enter number " + i + ":"));
+                
+                // Validate input to ensure it's a number
+                if (isNaN(value)) {
+                    alert("Please enter a valid number.");
+                    return;
+                }
+                
+                sum += value;  // Add each value to the sum
+            }
+
+            alert("The sum of the " + n + " numbers is: " + sum);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Date and Factorial Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .container button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .container button:hover {
+            background-color: #0056b3;
+        }
+
+        .container input {
+            padding: 10px;
+            width: calc(100% - 20px);
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Date & Factorial Calculator</h2>
+
+        <!-- Display Date Section -->
+        <button onclick="displayDate()">Display Date</button>
+        <input type="text" id="dateTextBox" readonly placeholder="Date will appear here">
+
+        <!-- Factorial Calculation Section -->
+        <button onclick="calculateFactorial()">Calculate Factorial</button>
+    </div>
+
+    <script>
+        // Function to display the current date in the text box
+        function displayDate() {
+            var currentDate = new Date();
+            document.getElementById("dateTextBox").value = currentDate.toLocaleDateString();
+        }
+
+        // Function to calculate factorial using a prompt and display it via an alert
+        function calculateFactorial() {
+            var n = prompt("Enter a number to calculate its factorial:");
+            n = parseInt(n);
+
+            if (isNaN(n) || n < 0) {
+                alert("Please enter a valid non-negative number.");
+                return;
+            }
+
+            var factorial = 1;
+            for (var i = 1; i <= n; i++) {
+                factorial *= i;
+            }
+
+            alert("The factorial of " + n + " is " + factorial);
+        }
+    </script>
+</body>
+</html>
